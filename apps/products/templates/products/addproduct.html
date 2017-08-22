@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body align="center">
+  <h1>Add Product</h1>
+  <form class="" action="/addproductdata" method="post">
+    {%csrf_token%}
+    <input type="text" name="product_image" value="" placeholder="Product Image" size="30"><br>
+    <input type="text" name="product_name" value="" placeholder="Product Name" size="30"><br>
+    <input type="text" name="product_starting_bid" value="" placeholder="Product Starting Bid" size="30"><br>
+    <textarea name="product_description" rows="8" cols="80" placeholder="Enter Product Description"></textarea><br>
+    <input type="submit" name="submit" value="Add Product">
+  </form>
+</body>
+</html>

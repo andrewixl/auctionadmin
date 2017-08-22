@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% load staticfiles %}
+    <link href="{% static 'modeling/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!-- <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet"> -->
+    <link href="{% static 'modeling/css/index.css' %}" rel="stylesheet">
+    <title>Em Gray Media</title>
+  </head>
+  <body>
+				<div class="container">
+        <a href="http://localhost:5000"><button class="btn btn-lg btn-primary btn-block" type="submit" value='Login'>Want to Be a Buyer</button></a>
+					<form class="form-signin" action='/login/login' method='post'>
+						{%csrf_token%}
+						<h2 class="form-signin-heading">Login</h2>
+
+						<label for="inputEmail" class="sr-only">Email address</label>
+						<input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required autofocus>
+
+						<label for="inputPassword" class="sr-only">Password</label>
+						<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+
+						<br>
+						<button class="btn btn-lg btn-primary btn-block" type="submit" value='Login'>Login</button>
+					</form>
+
+				<hr class="featurette-divider">
+
+				<form class="form-signin" action='/login/register' method='post'>
+					{%csrf_token%}
+					<h2 class="form-signin-heading">Register</h2>
+
+					<label for="inputEmail" class="sr-only">First Name</label>
+					<input type="text" id="inputEmail" class="form-control" name="first_name" placeholder="First Name" required autofocus>
+
+					<label for="inputEmail" class="sr-only">Last Name</label>
+					<input type="text" id="inputEmail" class="form-control" name="last_name" placeholder="Last Name" required autofocus>
+
+					<label for="inputEmail" class="sr-only">Username</label>
+					<input type="text" id="inputEmail" class="form-control" name="username" placeholder="Username" required autofocus>
+
+          <label for="inputEmail" class="sr-only">Phone Number</label>
+					<input type="tel" id="inputEmail" class="form-control" name="phone" placeholder="Phone Number" required autofocus>
+
+					<label for="inputEmail" class="sr-only">Email</label>
+					<input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus>
+
+          <label for="inputEmail" class="sr-only">City</label>
+					<input type="text" id="inputEmail" class="form-control" name="city" placeholder="City" required autofocus>
+
+          <label for="inputEmail" class="sr-only">State</label>
+					<input type="text" id="inputEmail" class="form-control" name="state" placeholder="State" required autofocus>
+
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
+
+					<label for="inputPassword" class="sr-only">Confirm Password</label>
+					<input type="password" id="inputPassword" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+
+					<br>
+					<button class="btn btn-lg btn-primary btn-block" type="submit" value='Register'>Register</button>
+				</form>
+
+			</div> <!-- /container -->
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="{% static 'modeling/js/bootstrap.min.js' %}"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="{% static 'modeling/js/holder.min.js' %}"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="{% static 'modeling/js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>
