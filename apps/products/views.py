@@ -19,7 +19,7 @@ def index(request):
         request.session['user_id']
     except KeyError:
         return redirect("/login")
-    products = Product.objects.filter(owner = request.session['user_id']).all()
+    products = Product.objects.filter(owner = request.session['user_id']).all().order_by("product_end_date")
     context = {
     'product' : products,
     }
@@ -41,7 +41,7 @@ def addproductdata(request):
     results = Product.objects.createProduct(request.POST, request.session['user_id'])
     request.session['productstatus'] = results['status']
     genErrors(request, results['errors'])
-    return redirect("/addproduct")
+    return redirect("/")
 
 def allproducts(request):
 	products = Product.objects.all()
@@ -64,4 +64,38 @@ def allproducts(request):
 	return HttpResponse(data, content_type='json')
 	# return JsonResponse(data, safe=False)
 
-# Create your views here.
+def profile(request):
+	try:
+		request.session['user_id']
+	except KeyError:
+		return redirect("/login")
+	context = {
+	"first": request.session['first_name'],
+	"last": request.session['last_name'],
+	"username": request.session['username'],
+	"email": request.session['email'],
+	"city": request.session['city'],
+	"state": request.session['state'],
+	"phone": request.session['phone'],
+	}
+	return render(request, 'products/profile.html', context)
+
+def deleteproduct(request, product_id):
+	product = Product.objects.get(id = product_id).delete()
+	return redirect('/')
+
+def editproduct(request, product_id):
+	product = Product.objects.get(id = product_id)
+	context = {
+		"product":product,
+	}
+	return render(request, 'products/editproduct.html', context)
+
+def editproductdata(request,product_id):
+	p = Product.objects.get(id = product_id)
+	p.photo = request.POST['product_image']
+	p.product_name = request.POST['product_name']
+	p.product_starting_bid = request.POST['product_starting_bid']
+	p.product_description = request.POST['product_description']
+	p.save()
+	return redirect('/')

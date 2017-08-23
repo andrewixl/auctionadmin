@@ -34,12 +34,13 @@ class ProductManager(models.Manager):
                                                        product_end_date=postData['product_end_date'], product_description=postData['product_description'], owner=user)
         return results
 
+
 class Product(models.Model):
     photo = models.CharField(max_length=1000)
     product_name = models.CharField(max_length=300)
     product_starting_bid = models.CharField(max_length=300)
     product_description = models.CharField(max_length=150)
-    product_end_date = models.CharField(max_length=150)
+    product_end_date = models.DateTimeField()
     owner = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
