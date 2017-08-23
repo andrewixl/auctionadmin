@@ -20,6 +20,10 @@ class ProductManager(models.Manager):
             results['status'] = False
             results['errors'].append(
                 'Please Enter a Valid Product Description.')
+        if len(postData['product_end_date']) < 3:
+            results['status'] = False
+            results['errors'].append(
+                'Please Enter a Valid Product Description.')
 
         if results['status'] == True:
             results['errors'].append(
@@ -27,7 +31,7 @@ class ProductManager(models.Manager):
             userInt = int(user_id)
             user = User.objects.get(id=userInt)
             results['person'] = Product.objects.create(photo=postData['product_image'], product_name=postData['product_name'], product_starting_bid=postData['product_starting_bid'],
-                                                       product_description=postData['product_description'], owner=user)
+                                                       product_end_date=postData['product_end_date'], product_description=postData['product_description'], owner=user)
         return results
 
 class Product(models.Model):
@@ -35,6 +39,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=300)
     product_starting_bid = models.CharField(max_length=300)
     product_description = models.CharField(max_length=150)
+    product_end_date = models.CharField(max_length=150)
     owner = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

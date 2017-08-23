@@ -9,9 +9,25 @@
 <body>
   <a href="/login/logout"><button type="button" name="logout">Logout</button></a>
   <h2>Current Products:</h2>
-  {%for photos in photos%}
-    <img src="{{photos.photo}}" alt="Photo" width="100px" height="auto">
-  {%endfor%}
+  <table border="1">
+<tr>
+	<th>Product Photo</th>
+	<th>Product Name</th>
+	<th>Starting Bid</th>
+  <th>Start Date</th>
+	<th>End Date</th>
+</tr>
+	{%for product in product%}
+		<tr>
+			<td><img src="{{product.photo}}" alt="Product Photo" width="100px" height="auto"></td>
+			<td>{{product.product_name}}</td>
+			<td>{{product.product_starting_bid}}</td>
+      <td>{{product.created_at}}</td>
+      <td>{{product.product_end_date}}</td>
+		</tr>
+	{%endfor%}
+
+</table>
   <a href="/addproduct"><button type="button" name="addproduct">Add Product</button></a>
 </body>
 </html>

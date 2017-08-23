@@ -18,10 +18,9 @@ def index(request):
         request.session['user_id']
     except KeyError:
         return redirect("/login")
-    photo = Product.objects.filter(owner = request.session['user_id']).all()
-    print photo
+    products = Product.objects.filter(owner = request.session['user_id']).all()
     context = {
-    'photos' : photo,
+    'product' : products,
     }
     return render(request, 'products/index.html', context)
 
