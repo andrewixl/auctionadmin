@@ -43,15 +43,28 @@ def addproductdata(request):
     genErrors(request, results['errors'])
     return redirect("/")
 
-def allproducts(request):
-	products = Product.objects.all()
+def allproducts(request, view_id):
+	products = None
+	print view_id
+	if view_id == "1":
+		#Recently Created
+		products = Product.objects.all().order_by("-created_at")
+	elif view_id == "2":
+		#Lowest Cost
+		products = Product.objects.all().order_by("product_starting_bid")
+	elif view_id == "3":
+		#Highest Cost
+		products = Product.objects.all().order_by("-product_starting_bid")
+	elif view_id == "4":
+		#Ending Soon
+		products = Product.objects.all().order_by("product_end_date")
 	productArr = []
 	for product in products:
 		dict={
 		"id":product.id,
 		"photo":product.photo,
 		"product_name":product.product_name,
-		"product_starting_bid":product.product_starting_bid,
+		"product_starting_bid":str(product.product_starting_bid),
 		"created_at":str(product.created_at),
 		"product_end_date":str(product.product_end_date),
 		"product_description":product.product_description,

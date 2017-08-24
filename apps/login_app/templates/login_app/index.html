@@ -14,9 +14,12 @@
   </head>
   <body>
 				<div class="container">
+          <form class="form-signin" action='http://localhost:5000' method='post'>
+						{%csrf_token%}
+            <button class="btn btn-lg btn-primary btn-block" type="submit" value='Login'>Want to Be a Buyer</button>
+          </form>
 					<form class="form-signin" action='/login/login' method='post'>
 						{%csrf_token%}
-            <a href="http://localhost:5000"><button class="btn btn-lg btn-primary btn-block" type="submit" value='Login'>Want to Be a Buyer</button></a><br>
 						<h2 class="form-signin-heading">Login</h2>
 
 						<label for="inputEmail" class="sr-only">Email address</label>

@@ -38,8 +38,8 @@ class ProductManager(models.Manager):
 class Product(models.Model):
     photo = models.CharField(max_length=1000)
     product_name = models.CharField(max_length=300)
-    product_starting_bid = models.CharField(max_length=300)
-    product_description = models.CharField(max_length=150)
+    product_starting_bid = models.IntegerField(max_length=300)
+    product_description = models.CharField(max_length=500)
     product_end_date = models.DateTimeField()
     owner = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)

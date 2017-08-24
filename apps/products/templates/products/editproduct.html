@@ -69,7 +69,7 @@
               {%csrf_token%}
               <input type="text" name="product_image" value="{{product.photo}}" placeholder="Product Image" size="26"><br>
               <input type="text" name="product_name" value="{{product.product_name}}" placeholder="Product Name" size="26"><br>
-              <input type="text" name="product_starting_bid" value="{{product.product_starting_bid}}" placeholder="Product Starting Bid" size="26"><br>
+              $<input type="text" name="product_starting_bid" value="{{product.product_starting_bid}}" placeholder="Product Starting Bid" size="25"><br>
               <input type="text" name="product_end_date" value="{{product.product_end_date}}" placeholder="Product End Date" size="26" disabled="disabled" readonly><br>
               <textarea name="product_description" rows="8" cols="50" placeholder="Enter Product Description">{{product.product_description}}</textarea><br>
               <input type="submit" name="submit" value="Update Product">
