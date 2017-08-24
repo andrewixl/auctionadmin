@@ -71,11 +71,8 @@ def allproducts(request, view_id):
 		"owner":product.owner.username,
 		}
 		productArr.append(dict)
-	# return HttpResponse(productArr)
 	data = json.dumps(productArr)
-	# data = serializers.serialize('json', productArr)
 	return HttpResponse(data, content_type='json')
-	# return JsonResponse(data, safe=False)
 
 def profile(request):
 	try:
@@ -112,3 +109,18 @@ def editproductdata(request,product_id):
 	p.product_description = request.POST['product_description']
 	p.save()
 	return redirect('/')
+
+def productdetails(request, product_id):
+	product = Product.objects.get(id = product_id)
+	dict={
+	"id":product.id,
+	"photo":product.photo,
+	"product_name":product.product_name,
+	"product_starting_bid":str(product.product_starting_bid),
+	"created_at":str(product.created_at),
+	"product_end_date":str(product.product_end_date),
+	"product_description":product.product_description,
+	"owner":product.owner.username,
+	}
+	data = json.dumps(dict)
+	return HttpResponse(data, content_type='json')
