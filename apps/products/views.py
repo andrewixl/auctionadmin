@@ -47,7 +47,7 @@ def allproducts(request, view_id):
 	products = None
 	print view_id
 	if view_id == "1":
-		#Recently Created
+		#Recently Added
 		products = Product.objects.all().order_by("-created_at")
 	elif view_id == "2":
 		#Lowest Cost
